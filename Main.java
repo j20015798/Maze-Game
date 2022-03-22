@@ -1,7 +1,3 @@
-//©m¦W:³\Ã£¤è
-//¾Ç¸¹:108403036
-//¨t¯Å:¸êºÞ2B
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Point;
@@ -22,7 +18,7 @@ public class Main extends JFrame{
 	Scanner input;
 	
 	public Main(){
-		super("¹q¬y«æ«æ´Î");
+		super("é›»æµæ€¥æ€¥æ£’");
 		startGame();
 	}
 	
@@ -36,12 +32,12 @@ public class Main extends JFrame{
 		
 		Pattern pattern = Pattern.compile("\\s+");
 		try {
-			//Åª¤J¦a¹ÏÀÉ
+			//è®€å…¥åœ°åœ–æª”
 			Files.lines(Paths.get("src/map.txt"))
 			     .map(line -> line.replaceAll("(?!')\\p{P}", ""))
 			     .flatMap(line -> pattern.splitAsStream(line))
 			     .mapToInt(Integer::parseInt)
-			     //§PÂ_¸Ó¦ì¸m¬O¤°»òª«¥ó
+			     //åˆ¤æ–·è©²ä½ç½®æ˜¯ä»€éº¼ç‰©ä»¶
 			     .mapToObj(value -> {
 					  switch(value) {
 				  		case 1:
@@ -54,10 +50,10 @@ public class Main extends JFrame{
 							return new Road(Main.this, HP_Bar);
 					  }			  
 				  })
-			     //ÀH¾÷±N´X­ÓÀð¾ÀÂà·R¤ß
+			     //éš¨æ©Ÿå°‡å¹¾å€‹ç‰†å£è½‰æ„›å¿ƒ
 				  .map(gameObj -> { 
 					  if(gameObj instanceof Brickwall)
-						  return (Math.random()*100<15) ? new Heart(Main.this, HP_Bar) : gameObj;//¾÷²v15%·|¬O·R¤ß
+						  return (Math.random()*100<15) ? new Heart(Main.this, HP_Bar) : gameObj;//æ©ŸçŽ‡15%æœƒæ˜¯æ„›å¿ƒ
 					  else
 						  return gameObj;
 				  })
@@ -76,7 +72,7 @@ public class Main extends JFrame{
 	
 	public void endGame() {
 		
-		if(JOptionPane.showConfirmDialog(this, "¦A¨Ó¤@§½?", "°T®§", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+		if(JOptionPane.showConfirmDialog(this, "å†ä¾†ä¸€å±€?", "è¨Šæ¯", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 			map.removeAll();
 			startGame();
 					}else {
@@ -93,7 +89,7 @@ public class Main extends JFrame{
 	    main.setLocationRelativeTo(null);
 	    main.setVisible(true);
 	    
-  		if(JOptionPane.showConfirmDialog(main, "¶}©l¹CÀ¸?", "¹q¬y«æ«æ´Î", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) {
+  		if(JOptionPane.showConfirmDialog(main, "é–‹å§‹éŠæˆ²?", "é›»æµæ€¥æ€¥æ£’", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) {
   			System.exit(1);
   		}
 	}
